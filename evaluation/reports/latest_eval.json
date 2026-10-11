@@ -1,0 +1,14 @@
+{
+  "product": "switchyard",
+  "timestamp": 1791710100.6388059,
+  "hardware": "NVIDIA RTX A5000 Laptop GPU 16GB",
+  "sample_size": 5,
+  "metrics": {
+    "p50_latency_direct_ms": 214.6,
+    "p95_latency_direct_ms": 3285.81,
+    "p50_latency_cached_ms": 2.61,
+    "cache_speedup_factor": 82.2,
+    "gateway_overhead_p95_ms": 7.4,
+    "availability_sla_pct": 99.98
+  }
+}

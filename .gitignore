@@ -38,6 +38,7 @@ out/
 .nuxt/
 dist/
 .cache/
+*.tsbuildinfo
 
 # Environment & Credentials
 .env
