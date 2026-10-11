@@ -1,0 +1,7 @@
+switchyard.local {
+    reverse_proxy localhost:3001
+
+    handle_path /api/* {
+        reverse_proxy localhost:8001
+    }
+}
