@@ -1,7 +1,7 @@
 {
   "product": "switchyard",
   "timestamp": 1791710100.6388059,
-  "hardware": "NVIDIA RTX A5000 Laptop GPU 16GB",
+  "hardware": "Dedicated NVIDIA GPU 16GB",
   "sample_size": 5,
   "metrics": {
     "p50_latency_direct_ms": 214.6,

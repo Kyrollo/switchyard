@@ -4,7 +4,7 @@ Switchyard enforces continuous evaluation to verify latency budgets, rate limit 
 
 ---
 
-## Benchmark Results (Local NVIDIA RTX A5000 Laptop GPU)
+## Benchmark Results (Local Dedicated NVIDIA GPU)
 
 Benchmark suite executed using `python evaluation/harness/runner.py` targeting warm Qwen2.5-0.5B inference and multi-tier semantic caching.
 

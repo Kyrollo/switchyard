@@ -13,7 +13,7 @@ except ImportError:
 
 
 class GPUMonitorService:
-    """Queries hardware metrics for local GPU (NVIDIA RTX A5000 Laptop GPU 16GB) and Ollama node."""
+    """Queries hardware metrics for local GPU (Dedicated NVIDIA GPU 16GB) and Ollama node."""
 
     def __init__(self, ollama_base_url: str = "http://127.0.0.1:11434") -> None:
         self.ollama_base_url = ollama_base_url.rstrip("/")
@@ -59,7 +59,7 @@ class GPUMonitorService:
         except Exception as exc:
             logger.warning("nvml_query_failed", error=str(exc))
             return GPUInfo(
-                name="NVIDIA RTX A5000 (Protected Mode)",
+                name="NVIDIA Dedicated NVIDIA GPU (Protected Mode)",
                 vram_total_mb=16384.0,
                 vram_used_mb=735.0,
                 vram_free_mb=15649.0,

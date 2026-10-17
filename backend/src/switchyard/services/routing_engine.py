@@ -27,10 +27,10 @@ class RoutingEngine:
         self._init_default_backends_and_policies()
 
     def _init_default_backends_and_policies(self) -> None:
-        # 1. Primary: Local Ollama on RTX A5000 GPU
+        # 1. Primary: Local Ollama on Dedicated NVIDIA GPU
         local_node = BackendNode(
             id="node-local-gpu",
-            name="Local RTX A5000 (Ollama)",
+            name="Local Dedicated NVIDIA GPU (Ollama)",
             provider=ProviderType.OLLAMA,
             base_url="http://127.0.0.1:11434/v1",
             models=["qwen2.5:0.5b", "llama3.2:latest", "mistral:latest"],

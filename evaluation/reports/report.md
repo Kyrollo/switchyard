@@ -1,7 +1,7 @@
 # Switchyard Evaluation Report
 
 - **Date**: 2026-10-11 09:15:00 UTC
-- **Target Hardware**: NVIDIA RTX A5000 Laptop GPU 16GB
+- **Target Hardware**: Dedicated NVIDIA GPU 16GB
 - **Model Benchmark**: Qwen2.5-0.5B (Local GPU) + Groq Fallback
 
 ## Summary Results

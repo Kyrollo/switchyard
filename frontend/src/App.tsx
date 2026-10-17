@@ -89,7 +89,7 @@ export default function App() {
 
   // Playground state
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
-    { role: 'assistant', content: 'Switchyard Gateway connected. Directing queries to local GPU on RTX A5000 with failover protection.' },
+    { role: 'assistant', content: 'Switchyard Gateway connected. Directing queries to local GPU on Dedicated NVIDIA GPU with failover protection.' },
   ]);
   const [promptInput, setPromptInput] = useState('');
   const [selectedModel, setSelectedModel] = useState('company-default');
@@ -261,7 +261,7 @@ export default function App() {
               <span className="font-bold text-primary">{data?.metrics.p95_latency_ms || 8.2}ms</span>
               <span className="text-border">|</span>
               <span className="text-muted-foreground">Hardware:</span>
-              <span className="text-foreground">RTX A5000 16GB</span>
+              <span className="text-foreground">Dedicated NVIDIA GPU (16GB)</span>
             </div>
 
             {loading ? (
@@ -371,7 +371,7 @@ export default function App() {
             </div>
             <div className="px-3">
               <div className="flex justify-between text-xs mb-1 font-mono">
-                <span>{data?.gpu.name || 'RTX A5000'}</span>
+                <span>{data?.gpu.name || 'Dedicated NVIDIA GPU'}</span>
                 <span>{data ? Math.round((data.gpu.vram_used_mb / data.gpu.vram_total_mb) * 100) : 40}%</span>
               </div>
               <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
@@ -426,7 +426,7 @@ export default function App() {
                     <Badge variant="success">Circuit Closed (Normal)</Badge>
                   </CardTitle>
                   <CardDescription>
-                    Client requests resolving 'company-default' target local RTX A5000 GPU first, failing over to cloud on timeout or 5xx.
+                    Client requests resolving 'company-default' target local Dedicated NVIDIA GPU first, failing over to cloud on timeout or 5xx.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -461,7 +461,7 @@ export default function App() {
                         <Badge variant="success" className="text-[10px]">Primary (Local GPU)</Badge>
                         <span className="text-[11px] font-mono text-emerald-600 font-bold">~8.2ms</span>
                       </div>
-                      <div className="font-bold text-xs">RTX A5000 Ollama</div>
+                      <div className="font-bold text-xs">Dedicated NVIDIA GPU Ollama</div>
                       <div className="text-[11px] text-muted-foreground font-mono">qwen2.5:0.5b (Warm)</div>
                       <div className="text-[10px] text-muted-foreground flex justify-between border-t border-border/40 pt-1">
                         <span>Cost: $0.00005/1k</span>
@@ -682,7 +682,7 @@ export default function App() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight">GPU Cluster & Interactive Playground</h2>
                 <p className="text-sm text-muted-foreground">
-                  Direct hardware utilization on NVIDIA RTX A5000 and live gateway inference playground.
+                  Direct hardware utilization on NVIDIA Dedicated NVIDIA GPU and live gateway inference playground.
                 </p>
               </div>
 
@@ -697,7 +697,7 @@ export default function App() {
                   <CardContent className="space-y-4">
                     <div className="p-4 rounded-xl bg-muted/50 border border-border space-y-3 font-mono text-xs">
                       <div className="text-foreground font-bold text-sm">
-                        {data?.gpu.name || 'NVIDIA RTX A5000 Laptop GPU'}
+                        {data?.gpu.name || 'Dedicated NVIDIA GPU'}
                       </div>
                       <div className="flex justify-between border-b border-border/50 pb-1.5">
                         <span className="text-muted-foreground">Total VRAM:</span>
@@ -1071,7 +1071,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="border-t border-border py-6 text-center text-xs text-muted-foreground">
-        Switchyard &bull; Private LLM Gateway &bull; Powered by NVIDIA RTX A5000 &bull; Licensed under MIT
+        Switchyard &bull; Private LLM Gateway &bull; Powered by NVIDIA Dedicated NVIDIA GPU &bull; Licensed under MIT
       </footer>
     </div>
   );

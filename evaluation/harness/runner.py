@@ -118,7 +118,7 @@ def run_benchmark() -> int:
     report_data = {
         "product": "switchyard",
         "timestamp": time.time(),
-        "hardware": "NVIDIA RTX A5000 Laptop GPU 16GB",
+        "hardware": "Dedicated NVIDIA GPU 16GB",
         "sample_size": len(latencies_direct),
         "metrics": {
             "p50_latency_direct_ms": round(p50_direct, 2),
@@ -137,7 +137,7 @@ def run_benchmark() -> int:
     report_md = f"""# Switchyard Evaluation Report
 
 - **Date**: {time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}
-- **Target Hardware**: NVIDIA RTX A5000 Laptop GPU 16GB
+- **Target Hardware**: Dedicated NVIDIA GPU 16GB
 - **Model Benchmark**: Qwen2.5-0.5B (Local GPU) + Groq Fallback
 
 ## Summary Results

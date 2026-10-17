@@ -1,6 +1,6 @@
 # Switchyard System Architecture
 
-Switchyard provides a single, high-performance, private OpenAI-compatible gateway fronting locally-hosted models (Ollama on NVIDIA RTX A5000) and enterprise cloud APIs.
+Switchyard provides a single, high-performance, private OpenAI-compatible gateway fronting locally-hosted models (Ollama on NVIDIA Dedicated NVIDIA GPU) and enterprise cloud APIs.
 
 ---
 
@@ -25,7 +25,7 @@ flowchart TD
     end
 
     subgraph Backends["Inference Backends"]
-        LocalGPU["Primary: Local Ollama (RTX A5000 16GB)\\nPort 11434"]
+        LocalGPU["Primary: Local Ollama (Dedicated NVIDIA GPU (16GB))\\nPort 11434"]
         Groq["Fallback 1: Groq Cloud (Llama-3.3-70B)"]
         OpenAI["Fallback 2: OpenAI (GPT-4o)"]
     end
@@ -70,7 +70,7 @@ sequenceDiagram
     participant RL as Rate Limiter (Token Bucket)
     participant SC as Semantic Cache
     participant RE as Routing Engine
-    participant GPU as Local RTX A5000 (Ollama)
+    participant GPU as Local Dedicated NVIDIA GPU (Ollama)
     participant FB as Cloud Fallback (Groq/OpenAI)
     participant MT as Metering & Audit
 

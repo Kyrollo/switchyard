@@ -107,7 +107,7 @@ Returns composite metrics: p95 latency, SLA uptime, token bucket gauges, NVML GP
 ### Hardware & GPU Telemetry
 `GET /api/v1/admin/gpu`
 
-Returns real-time VRAM allocation, utilization percentage, and temperature from NVML for NVIDIA RTX A5000 Laptop GPU.
+Returns real-time VRAM allocation, utilization percentage, and temperature from NVML for Dedicated NVIDIA GPU.
 
 ### Audit Logs
 `GET /api/v1/admin/logs?limit=50`
