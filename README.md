@@ -11,6 +11,23 @@ Private LLM Gateway: unified OpenAI-compatible routing over local and cloud mode
 
 ---
 
+
+## 🎬 Live Demonstration & Real Interface
+
+[![Watch Video Demo](docs/assets/screenshots/01_hero_dashboard.png)](docs/assets/demo.mp4)
+
+> 📹 **High-Definition 1080p MP4 Demo Recording**: [`docs/assets/demo.mp4`](docs/assets/demo.mp4)
+
+### 📸 Visual Feature Gallery
+
+| 1. System Overview & Dashboard | 2. Studio / Interactive Workbench |
+|:---:|:---:|
+| ![Dashboard](docs/assets/screenshots/01_hero_dashboard.png) | ![Workbench](docs/assets/screenshots/02_workbench_studio.png) |
+| **3. Analysis Results & Diagnostics** | **4. Telemetry, Metrics & Upload** |
+| ![Results](docs/assets/screenshots/03_analysis_results.png) | ![Telemetry](docs/assets/screenshots/04_telemetry_metrics.png) |
+
+---
+
 ## Architecture Overview
 
 ```mermaid
@@ -25,6 +42,15 @@ flowchart TD
 ```
 
 ## Quickstart
+
+### ⚡ 1-Click Launch (Windows Standalone)
+
+Run the included standalone launcher to boot all services and launch the browser immediately:
+
+```bat
+.\run.bat
+```
+
 
 ### Prerequisites
 - Docker & Docker Compose OR Python 3.12+ & Node 22+

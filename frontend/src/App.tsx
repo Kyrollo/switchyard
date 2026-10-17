@@ -20,7 +20,10 @@ import {
   Sparkles,
   Terminal,
   Trash2,
+  FolderUp,
 } from 'lucide-react';
+import { MarkdownRenderer } from '@/components/MarkdownRenderer';
+import { FileUploadZone } from '@/components/FileUploadZone';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -79,7 +82,7 @@ interface ChatMessage {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'routing' | 'analytics' | 'gpu' | 'keys' | 'logs'>('routing');
+  const [activeTab, setActiveTab] = useState<'routing' | 'analytics' | 'gpu' | 'keys' | 'logs' | 'uploads'>('routing');
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -165,7 +168,7 @@ export default function App() {
           model: selectedModel,
           messages: updated,
           temperature: 0.2,
-          max_tokens: 150,
+          max_tokens: 2048,
         }),
       });
 
@@ -348,6 +351,18 @@ export default function App() {
           >
             <Terminal className="w-4 h-4" />
             Audit & Request Logs
+          </button>
+
+          <button
+            onClick={() => setActiveTab('uploads')}
+            className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors text-left ${
+              activeTab === 'uploads'
+                ? 'bg-primary text-white shadow-sm'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+            }`}
+          >
+            <FolderUp className="w-4 h-4" />
+            Document & Rules Upload
           </button>
 
           <div className="pt-6 border-t border-border mt-6 space-y-3">
@@ -778,23 +793,27 @@ export default function App() {
                 </CardHeader>
                 <CardContent className="pt-4 space-y-4">
                   {/* Chat Message Box */}
-                  <div className="h-64 overflow-y-auto rounded-lg bg-muted/30 border border-border p-4 space-y-3 font-sans text-xs">
+                  <div className="min-h-[260px] max-h-[560px] overflow-y-auto rounded-lg bg-muted/30 border border-border p-4 space-y-3 font-sans text-xs">
                     {chatMessages.map((msg, idx) => (
                       <div
                         key={idx}
                         className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                       >
                         <div
-                          className={`max-w-[80%] rounded-xl px-3.5 py-2.5 ${
+                          className={`max-w-[85%] rounded-xl px-3.5 py-2.5 ${
                             msg.role === 'user'
                               ? 'bg-primary text-white'
                               : 'bg-card border border-border text-foreground shadow-sm'
                           }`}
                         >
-                          <div className="font-bold text-[10px] uppercase opacity-75 mb-0.5">
+                          <div className="font-bold text-[10px] uppercase opacity-75 mb-1">
                             {msg.role === 'user' ? 'User (Via Virtual Key)' : 'Switchyard Assistant'}
                           </div>
-                          <div className="leading-relaxed whitespace-pre-wrap">{msg.content}</div>
+                          {msg.role === 'user' ? (
+                            <div className="leading-relaxed whitespace-pre-wrap">{msg.content}</div>
+                          ) : (
+                            <MarkdownRenderer content={msg.content} expandable={true} defaultMaxHeight="max-h-[460px]" />
+                          )}
                         </div>
                       </div>
                     ))}
@@ -1024,6 +1043,27 @@ export default function App() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          )}
+
+          {/* TAB 6: Document & Rules Upload */}
+          {activeTab === 'uploads' && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight">Document & Rules Upload</h2>
+                <p className="text-sm text-muted-foreground">
+                  Upload custom routing definitions, prompt templates, and provider configurations (.json, .yaml, .txt, .md) to dynamically configure the gateway.
+                </p>
+              </div>
+
+              <FileUploadZone
+                apiBaseUrl="/api/v1"
+                allowedExtensions={['.json', '.yaml', '.yml', '.txt', '.md']}
+                acceptedFormatsText="JSON, YAML, TXT, Markdown"
+                onFileProcessed={() => {
+                  fetchDashboard();
+                }}
+              />
             </div>
           )}
         </main>

@@ -157,8 +157,7 @@ class RoutingEngine:
                 "temperature": request.temperature,
                 "stream": False,
             }
-            if request.max_tokens:
-                payload["max_tokens"] = request.max_tokens
+            payload["max_tokens"] = request.max_tokens if request.max_tokens else 2048
 
             headers = {"Content-Type": "application/json"}
             if node.api_key:
