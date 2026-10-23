@@ -30,12 +30,13 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install --upgrade pip
+          pip install "email-validator>=2.0.0" pytest pytest-asyncio pytest-cov ruff
           pip install -e "./backend[dev]"
       - name: Lint with Ruff
         run: ruff check backend/src backend/tests || true
       - name: Run Tests with Coverage
         run: |
-          PYTHONPATH=backend pytest -p no:langsmith --cov=src/switchyard --cov-report=xml --cov-report=term-missing backend/tests/
+          PYTHONPATH=backend pytest -p no:langsmith --cov=src --cov-report=xml --cov-report=term-missing backend/tests/
 
   frontend-check:
     name: Frontend Typecheck & Build
