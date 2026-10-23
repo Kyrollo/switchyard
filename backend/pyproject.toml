@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "switchyard"
 version = "1.0.0"
 description = "Private LLM Gateway: unified OpenAI-compatible routing over local and cloud models with quotas, virtual keys, and audit logging"
-readme = "../README.md"
+readme = "README.md"
 authors = [{ name = "Kyrollo", email = "kyrollo@users.noreply.github.com" }]
 requires-python = ">=3.12"
 dependencies = [
